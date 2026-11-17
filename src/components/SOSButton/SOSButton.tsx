@@ -69,7 +69,6 @@ export function SOSButton({
       data-state={state}
       style={{ width: size, height: size, ['--sora-sos-size' as string]: `${size}px` }}
       disabled={disabled}
-      aria-label={state === 'sent' ? sentLabel : `SOS. Mantén presionado ${Math.round(holdDuration / 1000)} segundos para enviar una alerta`}
       aria-live="polite"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture?.(e.pointerId);
@@ -113,6 +112,15 @@ export function SOSButton({
         )}
         <span className="sora-sos__hint">{state === 'sent' ? sentLabel : state === 'holding' ? cancelHint : hint}</span>
       </span>
+      {/*
+        v1.0.1: sin aria-label. El nombre accesible sale del texto visible ("SOS", "Mantén 3 s"…)
+        más esta instrucción oculta, así incluye lo que se ve en pantalla (WCAG 2.5.3).
+      */}
+      {state === 'default' && (
+        <span className="sora-visually-hidden">
+          . Mantén presionado {Math.round(holdDuration / 1000)} segundos para enviar una alerta
+        </span>
+      )}
     </button>
   );
 }

@@ -9,7 +9,7 @@ export const avatarStyles = `
 }
 .sora-avatar__circle img { width: 100%; height: 100%; object-fit: cover; }
 .sora-avatar[data-color="malva"] .sora-avatar__circle { background: var(--sora-palette-malva-abrazo); }
-.sora-avatar[data-color="coral"] .sora-avatar__circle { background: var(--sora-palette-coral-sora); }
+.sora-avatar[data-color="coral"] .sora-avatar__circle { background: var(--sora-color-action-primary); }
 .sora-avatar[data-size="md"] { width: ${sizes.avatar.md}px; height: ${sizes.avatar.md}px; font-size: 18px; }
 .sora-avatar[data-size="lg"] { width: ${sizes.avatar.lg}px; height: ${sizes.avatar.lg}px; font-size: 24px; }
 .sora-avatar[data-size="xl"] { width: ${sizes.avatar.xl}px; height: ${sizes.avatar.xl}px; font-size: 32px; }

@@ -139,7 +139,7 @@ Los valores salen de las variables y estilos de Figma y se exportan para usarlos
 ```tsx
 import { colors, palette, spacing, radius, shadows, typography, sizes } from '@sora-app/ui';
 
-colors.action.primary   // '#E4555D' (coral-sora)
+colors.action.primary   // '#C23B47' (coral-texto; contraste AA con texto blanco)
 spacing.lg              // 16
 radius.md               // 12
 typography.h1           // { fontFamily, fontWeight: 800, fontSize: 40, lineHeight: 48 }

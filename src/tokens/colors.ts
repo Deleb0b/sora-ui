@@ -18,6 +18,9 @@ export const palette = {
   ambarAviso: '#E8A23A',
   white: '#FFFFFF',
   coralHover: '#D44A53',
+  /** v1.0.1: tonos de acción con contraste AA (≥ 4.5:1) para texto blanco. */
+  coralProfundo: '#B8353F',
+  coralPresionado: '#A52F3A',
   violetaHover: '#9334C9',
   violetaPressed: '#8029B3',
 } as const;
@@ -36,9 +39,13 @@ export const colors = {
     link: palette.coralTexto,
   },
   action: {
-    primary: palette.coralSora,
-    primaryHover: palette.coralHover,
-    primaryPressed: palette.coralTexto,
+    /**
+     * v1.0.1: antes coralSora (#E4555D), que con texto blanco da 3.65:1 y no cumple WCAG AA.
+     * coralSora se conserva en la paleta para usos decorativos sin texto encima.
+     */
+    primary: palette.coralTexto,
+    primaryHover: palette.coralProfundo,
+    primaryPressed: palette.coralPresionado,
     secondary: palette.violetaVoz,
     secondaryHover: palette.violetaHover,
     secondaryPressed: palette.violetaPressed,

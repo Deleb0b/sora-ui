@@ -1,6 +1,6 @@
 {
   "name": "@sora-app/ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Biblioteca de componentes React del Design System Sora (app de emergencia para mujeres).",
   "license": "MIT",
   "type": "module",
@@ -65,5 +65,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.28.2": true
   }
 }

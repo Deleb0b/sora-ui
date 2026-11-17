@@ -153,3 +153,32 @@ describe('Otros', () => {
     vi.useRealTimers();
   });
 });
+
+/** Relación de contraste WCAG entre dos colores hex. */
+function contrast(a: string, b: string) {
+  const lum = (hex: string) => {
+    const [r, g, bl] = [1, 3, 5].map((i) => {
+      const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+      return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * bl;
+  };
+  const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+describe('Accesibilidad (v1.0.1)', () => {
+  it('el color de acción cumple WCAG AA con texto blanco en todos sus estados', () => {
+    for (const bg of [colors.action.primary, colors.action.primaryHover, colors.action.primaryPressed]) {
+      expect(contrast(colors.text.onAction, bg)).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+  it('el nombre accesible del SOSButton incluye su texto visible', () => {
+    render(<SOSButton onTrigger={() => {}} holdDuration={3000} hint="Mantén 3 s" />);
+    const btn = screen.getByRole('button');
+    expect(btn).not.toHaveAttribute('aria-label');
+    expect(btn.textContent).toContain('SOS');
+    expect(btn.textContent).toContain('Mantén 3 s');
+    expect(btn.textContent).toContain('Mantén presionado 3 segundos para enviar una alerta');
+  });
+});
