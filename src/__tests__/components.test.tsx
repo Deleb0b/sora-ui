@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { vi } from 'vitest';
 import { Alert, Button, Card, Checkbox, Input, Modal, Navbar, Select, SOSButton, Switch, colors } from '../index';
+import { sosStyles } from '../components/SOSButton/SOSButton.styles';
 
 describe('Button', () => {
   it('ejecuta onClick', async () => {
@@ -180,5 +181,14 @@ describe('Accesibilidad (v1.0.1)', () => {
     expect(btn.textContent).toContain('SOS');
     expect(btn.textContent).toContain('Mantén 3 s');
     expect(btn.textContent).toContain('Mantén presionado 3 segundos para enviar una alerta');
+  });
+});
+
+describe('Identidad visual (v1.0.2)', () => {
+  it('el SOSButton usa Coral Sora y su texto es grande, así cumple 3:1 (texto grande WCAG)', () => {
+    expect(colors.action.sos).toBe('#E4555D');
+    expect(contrast(colors.text.onAction, colors.action.sos)).toBeGreaterThanOrEqual(3);
+    expect(contrast(colors.text.onAction, colors.action.sosHover)).toBeGreaterThanOrEqual(3);
+    expect(sosStyles).toContain('max(19px');
   });
 });

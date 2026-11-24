@@ -46,6 +46,13 @@ export const colors = {
     primary: palette.coralTexto,
     primaryHover: palette.coralProfundo,
     primaryPressed: palette.coralPresionado,
+    /**
+     * v1.0.2: el botón SOS usa Coral Sora (#E4555D), como pide el Manual de Identidad.
+     * Con texto blanco da 3.65:1, válido porque todo su texto es grande (≥ 19 px bold, WCAG 3:1).
+     */
+    sos: palette.coralSora,
+    sosHover: palette.coralHover,
+    sosPressed: palette.coralTexto,
     secondary: palette.violetaVoz,
     secondaryHover: palette.violetaHover,
     secondaryPressed: palette.violetaPressed,
